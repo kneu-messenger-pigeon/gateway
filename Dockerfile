@@ -1,6 +1,6 @@
 FROM nginx:stable-alpine-slim
 
-COPY ssl /ssl
+COPY ssl /ssl-default
 COPY nginx-reload-ssl.sh /docker-entrypoint.d/40-nginx-reload-ssl.sh
 
 # Copy the nginx configuration file

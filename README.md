@@ -26,4 +26,6 @@ services:
         source: /etc/letsencrypt/live/example.org
         target: /ssl
         read_only: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 ```
