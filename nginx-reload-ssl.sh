@@ -7,10 +7,10 @@ set -e
 
 if [ -f /ssl/fullchain.pem ] && [ -f /ssl/privkey.pem ]; then
   echo "Use custom ssl certificates from /ssl"
-  ln -s /ssl /ssl-active
+  ln -s /ssl /ssl-enabled
 else
   echo "Use default ssl certificates from /ssl-default"
-  ln -s /ssl-default /ssl-active
+  ln -s /ssl-default /ssl-enabled
 fi
 
 if [ -f /ssl/dhparam.pem ]; then
