@@ -1,5 +1,7 @@
 FROM nginx:stable-alpine-slim
 
+ENV SSL_FOLDER=/ssl
+
 COPY ssl /ssl-default
 COPY nginx-reload-ssl.sh /docker-entrypoint.d/40-nginx-reload-ssl.sh
 

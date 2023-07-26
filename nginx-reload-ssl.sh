@@ -1,21 +1,21 @@
 #!/usr/bin/env sh
 
-mkdir -p /ssl
+mkdir -p "$SSL_FOLDER"
 set -e
 
 [ -L /ssl-enabled ] && rm /ssl-enabled
 
-if [ -f /ssl/fullchain.pem ] && [ -f /ssl/privkey.pem ]; then
-  echo "Use custom ssl certificates from /ssl"
-  ln -s /ssl /ssl-enabled
+if [ -f "$SSL_FOLDER/fullchain.pem" ] && [ -f "$SSL_FOLDER/ssl/privkey.pem" ]; then
+  echo "Use custom ssl certificates from $SSL_FOLDER"
+  ln -s "$SSL_FOLDER" /ssl-enabled
 else
   echo "Use default ssl certificates from /ssl-default"
   ln -s /ssl-default /ssl-enabled
 fi
 
-if [ -f /ssl/dhparam.pem ]; then
-  echo "Use custom dhparam.pem from /ssl"
-  ln -s /ssl/dhparam.pem /dhparam.pem
+if [ -f "$SSL_FOLDER/dhparam.pem" ]; then
+  echo "Use custom dhparam.pem from $SSL_FOLDER"
+  ln -s "$SSL_FOLDER/dhparam.pem" /dhparam.pem
 else
   echo "Use default dhparam.pem from /ssl-default"
   ln -s /ssl-default/dhparam.pem /dhparam.pem
