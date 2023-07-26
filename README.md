@@ -1,3 +1,5 @@
+[![Release](https://github.com/kneu-messenger-pigeon/gateway/actions/workflows/release.yaml/badge.svg)](https://github.com/kneu-messenger-pigeon/gateway/actions/workflows/release.yaml)
+
 ### Run test
 ```shell
 docker build -t test-nginx . && \
