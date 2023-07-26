@@ -1,8 +1,20 @@
+FROM alpine:latest as openssl
+
+RUN apk add --no-cache openssl
+
+RUN mkdir /ssl-default
+RUN openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
+    -keyout '/ssl-default/privkey.pem' \
+    -out '/ssl-default/fullchain.pem' \
+    -subj '/CN=localhost'
+
+RUN openssl dhparam -out /ssl-default/dhparam.pem 2048
+
 FROM nginx:stable-alpine-slim
 
 ENV SSL_FOLDER=/ssl
 
-COPY ssl /ssl-default
+COPY --from=openssl /ssl-default /ssl-default
 COPY nginx-reload-ssl.sh /docker-entrypoint.d/40-nginx-reload-ssl.sh
 
 # Copy the nginx configuration file

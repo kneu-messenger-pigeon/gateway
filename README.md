@@ -31,3 +31,9 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 ```
+
+
+docker run -it --rm -v $(pwd):/export frapsoft/openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
+-keyout 'export/privkey.pem' \
+-out 'export/fullchain.pem' \
+-subj '/CN=localhost'
