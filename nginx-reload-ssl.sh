@@ -5,7 +5,7 @@ set -e
 
 [ -L /ssl-enabled ] && rm /ssl-enabled
 
-if [ -f "$SSL_FOLDER/fullchain.pem" ] && [ -f "$SSL_FOLDER/ssl/privkey.pem" ]; then
+if [ -f "$SSL_FOLDER/fullchain.pem" ] && [ -f "$SSL_FOLDER/privkey.pem" ]; then
   echo "Use custom ssl certificates from $SSL_FOLDER"
   ln -s "$SSL_FOLDER" /ssl-enabled
 else
@@ -13,6 +13,7 @@ else
   ln -s /ssl-default /ssl-enabled
 fi
 
+[ -f /dhparam.pem ] && rm /dhparam.pem
 if [ -f "$SSL_FOLDER/dhparam.pem" ]; then
   echo "Use custom dhparam.pem from $SSL_FOLDER"
   ln -s "$SSL_FOLDER/dhparam.pem" /dhparam.pem
