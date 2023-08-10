@@ -33,7 +33,7 @@ services:
 ```
 
 
-### Run standalone container
+### Generate SSL certificate using docker
 ```
 docker run -it --rm -v $(pwd):/export frapsoft/openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
 -keyout 'export/privkey.pem' \
