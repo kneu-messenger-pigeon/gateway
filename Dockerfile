@@ -21,4 +21,4 @@ COPY nginx-reload-ssl.sh /docker-entrypoint.d/40-nginx-reload-ssl.sh
 COPY default.conf  /etc/nginx/conf.d/default.conf
 
 HEALTHCHECK --interval=15s --timeout=3s --start-period=5s \
-  CMD wget --no-verbose --tries=1 --spider http://localhost/healthcheck || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1/healthcheck || exit 1
