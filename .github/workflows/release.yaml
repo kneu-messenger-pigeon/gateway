@@ -12,7 +12,7 @@ jobs:
     outputs:
       imageid: ${{ steps.docker_build.outputs.imageid }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Test container
         run: ./test-docker.sh
 
