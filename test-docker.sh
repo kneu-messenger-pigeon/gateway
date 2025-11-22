@@ -20,6 +20,8 @@ docker logs $NAME 2>&1 | grep "Use default ssl certificates from /ssl-default"
 
 docker exec $NAME nginx -t
 
+docker ps -f name=$NAME -f health=healthy
+sleep 3
 HEALTHY=$(docker ps -f name=$NAME -f health=healthy --quiet | wc -l)
 if [ "$HEALTHY" -eq 1 ]; then
   echo "Container $NAME is healthy"
