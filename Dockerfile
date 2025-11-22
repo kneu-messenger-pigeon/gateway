@@ -1,14 +1,14 @@
-FROM alpine:latest as openssl
+FROM alpine:latest AS openssl
 
 RUN apk add --no-cache openssl
 
 RUN mkdir /ssl-default
-RUN openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
+RUN openssl req -x509 -nodes -newkey rsa:1024 -days 1 \
     -keyout '/ssl-default/privkey.pem' \
     -out '/ssl-default/fullchain.pem' \
     -subj '/CN=localhost'
 
-RUN openssl dhparam -out /ssl-default/dhparam.pem 2048
+RUN openssl dhparam -out /ssl-default/dhparam.pem 1024
 
 FROM nginx:stable-alpine-slim
 
